@@ -24,6 +24,11 @@ router.post('/', async (req, res) => {
     let body = req.body;
     let requestType = body.object;
     let senderId = body.entry[0].messaging[0].sender.id;
+    console.log('body: ' + body)
+    console.log('body.entry[0]: ' + body.entry[0])
+    console.log('body.entry[0].messaging[0]: ' + body.entry[0].messaging[0])
+    console.log('body.entry[0].messaging[0].message: ' + body.entry[0].messaging[0].message)
+    console.log('body.entry[0].messaging[0].message.text: ' + body.entry[0].messaging[0].message.text)
     let query = body.entry[0].messaging[0].message.text;
     let result = await chatCompletion(query);
     await sendMessage(senderId, result.response);
